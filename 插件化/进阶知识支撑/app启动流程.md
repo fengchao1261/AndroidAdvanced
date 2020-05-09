@@ -49,25 +49,28 @@ ActivityThread 就是UI线程。应用的入口类，通过调用main方法，�
 
 6. **将上述的应用进程信息注册到AMS中，启动启动栈顶页面**
 
-可以参考 [App启动的整体流程图](../png/App启动的整体流程图.png)
+- [x] 可以参考 [App启动的整体流程图](../png/App启动的整体流程图.png)
 
 
+### 常见问题
 
-**Launcher响应用户点击的详细过程**
-参考[Launcher响应用户点击详细流程图](../png/Launcher响应用户点击详细流程.png)
+#### Launcher响应用户点击的详细过程
+- [x] 参考[Launcher响应用户点击详细流程图](../png/Launcher响应用户点击详细流程.png)
 
-**AMS是如何和具体的Activity通信的**
+####  AMS是如何和具体的Activity通信的
 - 让Activity进入Pause状态 ApplicationThreadNative.schedulePauseActivity()
 - 让Activity进入Resume状态 ApplicationThreadNative.scheduleResumeActivity()
-参考[AMS和Activity的通信图](../png/AMS和Activity的通信.png)
+- [x] 参考[AMS和Activity的通信图](../png/AMS和Activity的通信.png)
 
-**H类的handleLaunchActivity方法做的啥**
+#### H类的handleLaunchActivity方法做的啥
 - 通过Instrumentation的newActivity方法，创建出来要启动的Activity实例。
 - 为这个Activity创建一个上下文Context对象，并与Activity进行关联。
 - 通过Instrumentation的callActivityOnCreate方法，执行Activity的onCreate方法，从而启动Activity。
 
 
 
+
 参考文献：
-[1] https://blog.csdn.net/pgg_cold/article/details/79491791
+[1] https://blog.csdn.net/pgg_cold/article/details/79491791 
+
 [2] https://www.cnblogs.com/Jax/p/6880604.html
