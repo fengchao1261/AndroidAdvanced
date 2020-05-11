@@ -67,10 +67,20 @@ ActivityThread 就是UI线程。应用的入口类，通过调用main方法，�
 - 为这个Activity创建一个上下文Context对象，并与Activity进行关联。
 - 通过Instrumentation的callActivityOnCreate方法，执行Activity的onCreate方法，从而启动Activity。
 
+#### 如果我们想在一个应用的Activity启动之前插入自己的Activity，应该在哪个阶段进行hook
+   原理：hook的最佳时间是Activity的onCreate方法被调用前，也就是Instrumentation的callActivityOnCreate方法，我们把它拦截掉
+         Instrumentation 相关的引用关系: ActivityThread -> Instrumentation
+         
+   具体步骤：
+        1.先反射 currentActivityThread() 方法拿到 ActivityThread 当前实例
+        2.反射 mInstrumentation 拿到 Instrumentation 对象
+        3.自己创建一个 Instrumentation 的子类,用来代替原来的 Instrumentation
+    [参考实现](code/HookUtil.java)
 
 
 
 参考文献：
+
 [1] https://blog.csdn.net/pgg_cold/article/details/79491791 
 
 [2] https://www.cnblogs.com/Jax/p/6880604.html
