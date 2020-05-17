@@ -72,8 +72,6 @@ Apk的资源是通过AssetManager.addAssetPath方法来完成加载的。
        }
    ```
 
-   ​	
-
 ### 2. 热修复的资源修复的原理：
 通过反射构建自己的AssetManager对象，然后把调用addAssetPath加载自己的资源，然后把自己构建的AssetManager通过反射设置给mAssets变量，这样下次加载资源就是用的我们AssetManager。
 
